@@ -1,0 +1,6 @@
+@GdeIzaci_HostAddress = http://localhost:5248
+
+GET {{GdeIzaci_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

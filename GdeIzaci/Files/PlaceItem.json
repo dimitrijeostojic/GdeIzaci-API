@@ -1,0 +1,22 @@
+[
+  {
+    "PlaceItemID": "4d7d327c-62b6-4fa7-afbf-d682fe3b1a1d",
+    "Name": "Restoran",
+    "NumberOfPlacesCurrentlyOfThisType": 0
+  },
+  {
+    "PlaceItemID": "8e54fb8e-723f-4b6b-bae2-76d89e1a1c56",
+    "Name": "Kafić",
+    "NumberOfPlacesCurrentlyOfThisType": 0
+  },
+  {
+    "PlaceItemID": "3c8e3f8d-9a6a-4f91-bfce-8d8e45d14e83",
+    "Name": "Klub",
+    "NumberOfPlacesCurrentlyOfThisType": 0
+  },
+  {
+    "PlaceItemID": "e6f95667-8ef7-4c5e-b5bf-92d31fdd581b",
+    "Name": "Bar",
+    "NumberOfPlacesCurrentlyOfThisType": 0
+  }
+]
