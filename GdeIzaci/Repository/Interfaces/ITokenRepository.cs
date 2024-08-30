@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace GdeIzaci.Repository
+namespace GdeIzaci.Repository.Interfaces
 {
     public interface ITokenRepository
     {

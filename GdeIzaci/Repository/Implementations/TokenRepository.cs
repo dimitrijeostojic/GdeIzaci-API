@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GdeIzaci.Repository.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace GdeIzaci.Repository
+namespace GdeIzaci.Repository.Implementations
 {
     public class TokenRepository : ITokenRepository
     {
@@ -20,6 +21,8 @@ namespace GdeIzaci.Repository
             // Kreiranje tvrdnji (claims) i dodavanje tvrdnje o email adresi korisnika
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Email, user.Email));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+
 
             // Dodavanje tvrdnji za uloge korisnika
             foreach (var role in roles)
@@ -38,7 +41,7 @@ namespace GdeIzaci.Repository
                 configuration["Jwt:Issuer"],
                 configuration["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(15),
+                expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: credentials);
 
             // Pretvaranje tokena u string i vraćanje rezultata

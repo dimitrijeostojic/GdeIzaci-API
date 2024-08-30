@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GdeIzaci.Migrations
 {
     [DbContext(typeof(GdeIzaciDBContext))]
-    [Migration("20240428213436_Seed PlaceItem")]
-    partial class SeedPlaceItem
+    [Migration("20240829131153_Update review table")]
+    partial class Updatereviewtable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,15 +31,11 @@ namespace GdeIzaci.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -50,22 +46,22 @@ namespace GdeIzaci.Migrations
                     b.Property<int>("NumberOfReviews")
                         .HasColumnType("int");
 
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("PlaceItemID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserCreatedID")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("UserReservedID")
+                    b.Property<Guid>("UserCreatedID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PlaceID");
 
                     b.HasIndex("PlaceItemID");
-
-                    b.HasIndex("UserCreatedID");
-
-                    b.HasIndex("UserReservedID");
 
                     b.ToTable("Places");
                 });
@@ -114,6 +110,28 @@ namespace GdeIzaci.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GdeIzaci.Models.Domain.Reservation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PlaceID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ReservationDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlaceID");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("GdeIzaci.Models.Domain.Review", b =>
                 {
                     b.Property<Guid>("ReviewID")
@@ -124,16 +142,8 @@ namespace GdeIzaci.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumberOfStars")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("PlaceID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TypeOfReview")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
@@ -142,32 +152,7 @@ namespace GdeIzaci.Migrations
 
                     b.HasIndex("PlaceID");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Reviews");
-                });
-
-            modelBuilder.Entity("GdeIzaci.Models.Domain.User", b =>
-                {
-                    b.Property<Guid>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Place", b =>
@@ -175,26 +160,21 @@ namespace GdeIzaci.Migrations
                     b.HasOne("GdeIzaci.Models.Domain.PlaceItem", "PlaceItem")
                         .WithMany("Places")
                         .HasForeignKey("PlaceItemID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GdeIzaci.Models.Domain.User", "PlaceCreatedBy")
-                        .WithMany("CreatedPlaces")
-                        .HasForeignKey("UserCreatedID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("GdeIzaci.Models.Domain.User", "PlaceReservedBy")
-                        .WithMany("ReservedPlaces")
-                        .HasForeignKey("UserReservedID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("PlaceCreatedBy");
 
                     b.Navigation("PlaceItem");
+                });
 
-                    b.Navigation("PlaceReservedBy");
+            modelBuilder.Entity("GdeIzaci.Models.Domain.Reservation", b =>
+                {
+                    b.HasOne("GdeIzaci.Models.Domain.Place", "Place")
+                        .WithMany("Reservations")
+                        .HasForeignKey("PlaceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Place");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Review", b =>
@@ -202,37 +182,22 @@ namespace GdeIzaci.Migrations
                     b.HasOne("GdeIzaci.Models.Domain.Place", "Place")
                         .WithMany("Reviews")
                         .HasForeignKey("PlaceID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("GdeIzaci.Models.Domain.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Place");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Place", b =>
                 {
+                    b.Navigation("Reservations");
+
                     b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.PlaceItem", b =>
                 {
                     b.Navigation("Places");
-                });
-
-            modelBuilder.Entity("GdeIzaci.Models.Domain.User", b =>
-                {
-                    b.Navigation("CreatedPlaces");
-
-                    b.Navigation("ReservedPlaces");
-
-                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

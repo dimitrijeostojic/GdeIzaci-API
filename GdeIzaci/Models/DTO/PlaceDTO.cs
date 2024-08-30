@@ -7,15 +7,15 @@ namespace GdeIzaci.Models.DTO
         public Guid PlaceID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string City { get; set; }
-        public string Address { get; set; }
-        public int NumberOfReviews { get; set; }
-      
+        public string Location { get; set; }
+        public int Price { get; set; }
+        public string Photo { get; set; }
+        public Guid UserCreatedID { get; set; }
+        public Guid PlaceItemID { get; set; }
 
-        //Navigation properties
-        public User PlaceReservedBy { get; set; }
-        public User PlaceCreatedBy { get; set; }
+        //navigation properties
         public PlaceItemDTO PlaceItem { get; set; }
-        public ICollection<ReviewDTO> Review { get; set; }
+        public ICollection<ReviewDTO> Reviews { get; set; }
+        //public ICollection<ReservationDTO> Reservations { get; set; }
     }
 }

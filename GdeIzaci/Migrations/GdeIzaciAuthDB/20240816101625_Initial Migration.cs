@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GdeIzaci.Migrations.GdeIzaciAuthDB
 {
     /// <inheritdoc />
-    public partial class CreatingAuthDatabase : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GdeIzaci.Migrations.GdeIzaciAuthDB
 {
     [DbContext(typeof(GdeIzaciAuthDBContext))]
-    [Migration("20240428141053_Creating Auth Database")]
-    partial class CreatingAuthDatabase
+    [Migration("20240816101625_Initial Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

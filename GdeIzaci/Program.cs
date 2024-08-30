@@ -1,6 +1,7 @@
 using GdeIzaci.Data;
 using GdeIzaci.Mappings;
-using GdeIzaci.Repository;
+using GdeIzaci.Repository.Implementations;
+using GdeIzaci.Repository.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +60,12 @@ builder.Services.AddDbContext<GdeIzaciAuthDBContext>(options => options.UseSqlSe
 
 
 builder.Services.AddScoped<IPlaceRepository, SQLPlaceRepository>();
+builder.Services.AddScoped<IPlaceItemRepository, SQLPlaceItemRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IReservationRepository, SQLReservationRepository>();
+builder.Services.AddScoped<IReviewRepository, SQLReviewRepository>();
+
+
 
 
 
@@ -98,11 +104,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
 });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
 
-
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

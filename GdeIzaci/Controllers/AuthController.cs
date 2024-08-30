@@ -1,8 +1,10 @@
 ﻿using GdeIzaci.Models.DTO;
-using GdeIzaci.Repository;
+using GdeIzaci.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using System.Data;
 
 namespace GdeIzaci.Controllers
 {
@@ -24,59 +26,88 @@ namespace GdeIzaci.Controllers
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequestDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            // Kreiranje IdentityUser objekta sa podacima iz zahteva
             var identityUser = new IdentityUser()
             {
                 UserName = registerRequestDto.Username,
                 Email = registerRequestDto.Email,
             };
 
+            // Kreiranje korisnika u sistemu
             var identityResult = await userManager.CreateAsync(identityUser, registerRequestDto.Password);
 
-            if (identityResult.Succeeded)
+            if (!identityResult.Succeeded)
             {
-                //Add roles to this User
-                if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
+                var errors = string.Join(", ", identityResult.Errors.Select(e => e.Description));
+                return BadRequest($"Error creating user: {errors}");
+            }
+
+            // Dodavanje uloga korisniku ako je registracija uspešna
+            if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
+            {
+                identityResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
+
+                if (!identityResult.Succeeded)
                 {
-                    identityResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
-                    if (identityResult.Succeeded)
-                    {
-                        return Ok("User was registered! Please login.");
-                    }
+                    var errors = string.Join(", ", identityResult.Errors.Select(e => e.Description));
+                    return BadRequest($"Error adding roles: {errors}");
                 }
             }
-            return BadRequest("Something went wrong!");
+
+            //Generisanje tokena
+            var roles = await userManager.GetRolesAsync(identityUser);
+            if (roles != null)
+            {
+                //Kreiranje tokena
+                var jwtToken = tokenRepository.CreateJWTToken(identityUser, roles.ToList());
+                return Ok(new
+                {
+                    Message = "User was registered successfully, please Login",
+                    JwtToken = jwtToken,
+                    Username = registerRequestDto.Username,
+                });
+            }
+
+            return Ok("User was registered, please Login");
         }
+
 
         // POST: localhost:8071/api/Login
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            // Pronalaženje korisnika po email adresi
             var user = await userManager.FindByNameAsync(loginRequestDto.Username);
             if (user != null)
             {
+                // Provera lozinke
                 var checkPasswordResult = await userManager.CheckPasswordAsync(user, loginRequestDto.Password);
                 if (checkPasswordResult)
                 {
                     //Get roles for this user
-
                     var roles = await userManager.GetRolesAsync(user);
                     if (roles != null)
                     {
-                        //Create Token
-
+                        //Kreiranje tokena
                         var jwtToken = tokenRepository.CreateJWTToken(user, roles.ToList());
-                        var response = new LoginResponseDto()
+                        return Ok(new
                         {
                             JwtToken = jwtToken,
-                        };
-                        return Ok(response);
+                            Username = loginRequestDto.Username,
+                        });
                     }
-
-
                 }
             }
-            return BadRequest("Username or password incorrect");
+            return BadRequest("Wrong credentials!");
         }
     }
 }

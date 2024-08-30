@@ -1,0 +1,12 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GdeIzaci.Models.DTO
+{
+    public class UpdateReviewDto
+    {
+        [Required]
+        public int NumberOfStars { get; set; }
+        [Required]
+        public Guid PlaceID { get; set; }
+    }
+}

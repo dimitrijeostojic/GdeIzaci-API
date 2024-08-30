@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GdeIzaci.Migrations
 {
     [DbContext(typeof(GdeIzaciDBContext))]
-    [Migration("20240428191310_Remove isAdmin and isManager in User")]
-    partial class RemoveisAdminandisManagerinUser
+    [Migration("20240819190908_UpdateDatabase")]
+    partial class UpdateDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,15 +31,11 @@ namespace GdeIzaci.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -50,22 +46,22 @@ namespace GdeIzaci.Migrations
                     b.Property<int>("NumberOfReviews")
                         .HasColumnType("int");
 
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("PlaceItemID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserCreatedID")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("UserReservedID")
+                    b.Property<Guid>("UserCreatedID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PlaceID");
 
                     b.HasIndex("PlaceItemID");
-
-                    b.HasIndex("UserCreatedID");
-
-                    b.HasIndex("UserReservedID");
 
                     b.ToTable("Places");
                 });
@@ -86,6 +82,51 @@ namespace GdeIzaci.Migrations
                     b.HasKey("PlaceItemID");
 
                     b.ToTable("PlaceItems");
+
+                    b.HasData(
+                        new
+                        {
+                            PlaceItemID = new Guid("4d7d327c-62b6-4fa7-afbf-d682fe3b1a1d"),
+                            Name = "Restoran",
+                            NumberOfPlacesCurrentlyOfThisType = 0
+                        },
+                        new
+                        {
+                            PlaceItemID = new Guid("8e54fb8e-723f-4b6b-bae2-76d89e1a1c56"),
+                            Name = "Kafić",
+                            NumberOfPlacesCurrentlyOfThisType = 0
+                        },
+                        new
+                        {
+                            PlaceItemID = new Guid("3c8e3f8d-9a6a-4f91-bfce-8d8e45d14e83"),
+                            Name = "Klub",
+                            NumberOfPlacesCurrentlyOfThisType = 0
+                        },
+                        new
+                        {
+                            PlaceItemID = new Guid("e6f95667-8ef7-4c5e-b5bf-92d31fdd581b"),
+                            Name = "Bar",
+                            NumberOfPlacesCurrentlyOfThisType = 0
+                        });
+                });
+
+            modelBuilder.Entity("GdeIzaci.Models.Domain.Reservation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PlaceID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlaceID");
+
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Review", b =>
@@ -116,32 +157,7 @@ namespace GdeIzaci.Migrations
 
                     b.HasIndex("PlaceID");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Reviews");
-                });
-
-            modelBuilder.Entity("GdeIzaci.Models.Domain.User", b =>
-                {
-                    b.Property<Guid>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Place", b =>
@@ -149,26 +165,21 @@ namespace GdeIzaci.Migrations
                     b.HasOne("GdeIzaci.Models.Domain.PlaceItem", "PlaceItem")
                         .WithMany("Places")
                         .HasForeignKey("PlaceItemID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GdeIzaci.Models.Domain.User", "PlaceCreatedBy")
-                        .WithMany("CreatedPlaces")
-                        .HasForeignKey("UserCreatedID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("GdeIzaci.Models.Domain.User", "PlaceReservedBy")
-                        .WithMany("ReservedPlaces")
-                        .HasForeignKey("UserReservedID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("PlaceCreatedBy");
 
                     b.Navigation("PlaceItem");
+                });
 
-                    b.Navigation("PlaceReservedBy");
+            modelBuilder.Entity("GdeIzaci.Models.Domain.Reservation", b =>
+                {
+                    b.HasOne("GdeIzaci.Models.Domain.Place", "Place")
+                        .WithMany("Reservations")
+                        .HasForeignKey("PlaceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Place");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Review", b =>
@@ -176,37 +187,22 @@ namespace GdeIzaci.Migrations
                     b.HasOne("GdeIzaci.Models.Domain.Place", "Place")
                         .WithMany("Reviews")
                         .HasForeignKey("PlaceID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("GdeIzaci.Models.Domain.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Place");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.Place", b =>
                 {
+                    b.Navigation("Reservations");
+
                     b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("GdeIzaci.Models.Domain.PlaceItem", b =>
                 {
                     b.Navigation("Places");
-                });
-
-            modelBuilder.Entity("GdeIzaci.Models.Domain.User", b =>
-                {
-                    b.Navigation("CreatedPlaces");
-
-                    b.Navigation("ReservedPlaces");
-
-                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

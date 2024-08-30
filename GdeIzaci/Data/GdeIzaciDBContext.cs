@@ -12,63 +12,39 @@ namespace GdeIzaci.Data
 
         }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<PlaceItem> PlaceItems { get; set; }
         public DbSet<Place> Places { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>()
-        .HasMany(u => u.Reviews)
-        .WithOne(p => p.User)
-        .HasForeignKey(p => p.UserID)
-        .OnDelete(DeleteBehavior.Restrict);
+            //// Veza Place - PlaceItem (1-M)
+            //modelBuilder.Entity<Place>()
+            //    .HasMany(p => p.PlaceItem)
+            //    .WithOne(pi => pi.Place)
+            //    .HasForeignKey(pi => pi.PlaceID);
 
-            modelBuilder.Entity<User>()
-        .HasMany(u => u.CreatedPlaces)
-        .WithOne(p => p.PlaceCreatedBy)
-        .HasForeignKey(p => p.UserCreatedID)
-        .OnDelete(DeleteBehavior.Restrict);
+            //// Veza Place - Reservation (1-M)
+            //modelBuilder.Entity<Place>()
+            //    .HasMany(p => p.Reservations)
+            //    .WithOne(r => r.Place)
+            //    .HasForeignKey(r => r.Place);
 
-            modelBuilder.Entity<User>()
-        .HasMany(u => u.ReservedPlaces)
-        .WithOne(p => p.PlaceReservedBy)
-        .HasForeignKey(p => p.UserReservedID)
-        .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Place>()
-        .HasMany(u => u.Reviews)
-        .WithOne(p => p.Place)
-        .HasForeignKey(p => p.PlaceID)
-        .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<PlaceItem>()
-        .HasMany(u => u.Places)
-        .WithOne(p => p.PlaceItem)
-        .HasForeignKey(p => p.PlaceItemID)
-        .OnDelete(DeleteBehavior.Restrict);
+            //// Veza Place - Review (1-M)
+            //modelBuilder.Entity<Place>()
+            //    .HasMany(p => p.Reviews)
+            //    .WithOne(r => r.Place)
+            //    .HasForeignKey(r => r.PlaceID);
 
 
-            //Seed places to the databse
-            //modelBuilder.Entity<Place>().HasData(SeedPlaces());
+
+
+            //Seed placeItems to the databse
             modelBuilder.Entity<PlaceItem>().HasData(SeedPlaceItems());
-            //modelBuilder.Entity<User>().HasData(SeedUsers());
-            //modelBuilder.Entity<Review>().HasData(SeedReviews());
-        }
-
-
-        public List<Place> SeedPlaces()
-        {
-            var places = new List<Place>();
-            using (StreamReader r = new StreamReader(@"json file path"))
-            {
-                string json = r.ReadToEnd();
-                places = JsonConvert.DeserializeObject<List<Place>>(json);
-            }
-            return places;
+            //modelBuilder.Entity<Place>().HasData(SeedPlaces());
         }
         public List<PlaceItem> SeedPlaceItems()
         {
@@ -80,25 +56,16 @@ namespace GdeIzaci.Data
             }
             return placeItems;
         }
-        public List<User> SeedUsers()
+
+        public List<Place> SeedPlaces()
         {
-            var users = new List<User>();
-            using (StreamReader r = new StreamReader(@"json file path"))
+            var places = new List<Place>();
+            using(StreamReader r = new StreamReader(""))
             {
                 string json = r.ReadToEnd();
-                users = JsonConvert.DeserializeObject<List<User>>(json);
+                places=JsonConvert.DeserializeObject<List<Place>>(json);
             }
-            return users;
-        }
-        public List<Review> SeedReviews()
-        {
-            var reviews = new List<Review>();
-            using (StreamReader r = new StreamReader(@"json file path"))
-            {
-                string json = r.ReadToEnd();
-                reviews = JsonConvert.DeserializeObject<List<Review>>(json);
-            }
-            return reviews;
+            return places;
         }
     }
 }

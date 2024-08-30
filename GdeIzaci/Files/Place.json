@@ -1,49 +1,11 @@
-{
-  [
-    {
-      "PlaceID": "16fbd2b5-2e56-43b7-9ebd-6fc75eb0c6b3",
-      "Name": "Central Park",
-      "Description": "Large public park in New York City",
-      "City": "New York",
-      "Address": "Central Park",
-      "NumberOfReviews": 50,
-      "UserCreatedID": "83c0e417-3640-4c36-af23-92573d335048",
-      "UserReservedID": "00000000-0000-0000-0000-000000000000",
-      "PlaceItemID": "a6a62f1b-1eb3-4ba2-b11e-0579a1f5963e"
-    },
-    {
-      "PlaceID": "83c0e417-3640-4c36-af23-92573d335048",
-      "Name": "Times Square",
-      "Description": "Famous tourist attraction in Manhattan",
-      "City": "New York",
-      "Address": "Broadway",
-      "NumberOfReviews": 30,
-      "UserCreatedID": "1af3e67a-12cf-4f95-b21a-3e0c5d12f22f",
-      "UserReservedID": "00000000-0000-0000-0000-000000000000",
-      "PlaceItemID": "a6a62f1b-1eb3-4ba2-b11e-0579a1f5963e"
-    },
-    {
-      "PlaceID": "3d8585fb-6ef6-4a82-badc-1e5a1c4e0e36",
-      "Name": "Kalemegdan Fortress",
-      "Description": "Historic fortress overlooking the confluence of the Sava and Danube rivers",
-      "City": "Belgrade",
-      "Address": "Kalemegdan bb",
-      "NumberOfReviews": 20,
-      "UserCreatedID": "1af3e67a-12cf-4f95-b21a-3e0c5d12f22f",
-      "UserReservedID": "00000000-0000-0000-0000-000000000000",
-      "PlaceItemID": "c3c62b3a-dc16-4f62-841f-d58b22e9e366"
-    },
-    {
-      "PlaceID": "63472a19-5e4d-4680-842b-4dcda7d25cf2",
-      "Name": "Skadarlija",
-      "Description": "Bohemian quarter known for its cafes, restaurants, and live music",
-      "City": "Belgrade",
-      "Address": "Skadarlija bb",
-      "NumberOfReviews": 15,
-      "UserCreatedID": "83c0e417-3640-4c36-af23-92573d335048",
-      "UserReservedID": "00000000-0000-0000-0000-000000000000",
-      "PlaceItemID": "c3c62b3a-dc16-4f62-841f-d58b22e9e366"
-    }
-  ]
-
-}
+[
+  {
+    "name": "ElectraVibe Lounge",
+    "description": "Immerse yourself in the pulsating heart of California's nightlife at ElectraVibe Lounge, where every night is a new adventure. This exclusive club offers an electrifying atmosphere, top-tier DJs, and a vibrant crowd.",
+    "location": "California, USA",
+    "price": 800,
+    "photo": "http://res.cloudinary.com/dddhmuy8p/image/upload/v1708979762/d1qwmcspgph8xgh8.jpg",
+    "PlaceItemID": "3C8E3F8D-9A6A-4F91-BFCE-8D8E45D14E83"
+  },
+  
+]
