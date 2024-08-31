@@ -69,6 +69,7 @@ namespace GdeIzaci.Controllers
                     Message = "User was registered successfully, please Login",
                     JwtToken = jwtToken,
                     Username = registerRequestDto.Username,
+                    Roles = roles
                 });
             }
 
@@ -103,6 +104,7 @@ namespace GdeIzaci.Controllers
                         {
                             JwtToken = jwtToken,
                             Username = loginRequestDto.Username,
+                            Roles = roles
                         });
                     }
                 }

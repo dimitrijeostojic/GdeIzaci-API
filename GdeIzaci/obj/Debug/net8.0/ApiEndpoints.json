@@ -386,5 +386,62 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.UserController",
+    "Method": "ChangeUserRole",
+    "RelativePath": "api/User/changeRole/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "GdeIzaci.Models.DTO.RoleChangeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.UserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/User/delete/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.UserController",
+    "Method": "GetManagers",
+    "RelativePath": "api/User/managers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.UserController",
+    "Method": "GetAllNonAdminUsers",
+    "RelativePath": "api/User/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
