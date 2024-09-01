@@ -8,7 +8,7 @@ namespace GdeIzaci.Models.DTO
         [MinLength(3, ErrorMessage = "Name has to be minimum of 3 characters")]
         public string Name { get; set; }
         [Required]
-        [MaxLength(200, ErrorMessage = "Description has to be maximum of 200 characters")]
+        //[MaxLength(200, ErrorMessage = "Description has to be maximum of 200 characters")]
         public string Description { get; set; }
         [Required]
         public string Location { get; set; }

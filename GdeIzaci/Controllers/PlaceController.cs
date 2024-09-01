@@ -47,7 +47,7 @@ namespace GdeIzaci.Controllers
         [HttpPost]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Create([FromBody] AddPlaceRequestDto addPlaceRequestDto)
-        {
+            {
             var currentUser = await userManager.GetUserAsync(User);
             if (currentUser == null)
             {
