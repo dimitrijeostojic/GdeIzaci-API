@@ -79,9 +79,19 @@ namespace GdeIzaci.Repository.Implementations
 
         }
 
+        public Task<Place?> GetAverageAsync(Guid placeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Place?> GetByIdAsync(Guid id)
         {
             return await dbContext.Places.Include("PlaceItem").FirstOrDefaultAsync(x => x.PlaceID == id);
+        }
+
+        public Task<Place?> GetByPlaceIdUserIdAsync(Guid placeId, Guid userId)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Place?> UpdateAsync(Guid id, Place place)

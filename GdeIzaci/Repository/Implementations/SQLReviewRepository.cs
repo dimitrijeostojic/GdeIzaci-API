@@ -52,15 +52,39 @@ namespace GdeIzaci.Repository.Implementations
             return await reviews.ToListAsync();
         }
 
+        public async Task<Review?> GetAverageAsync(Guid placeId)
+        {
+            var reviews = await dbContext.Reviews.Where(r => r.PlaceID == placeId).ToListAsync();
+
+            if (reviews.Count == 0)
+                return null;
+
+            var averageRating = reviews.Average(r => r.numberOfStars);
+
+            // Napravi novi Review objekat koji će sadržati prosečnu ocenu.
+            var reviewWithAverage = new Review
+            {
+                PlaceID = placeId,
+                numberOfStars = averageRating
+            };
+
+            return reviewWithAverage;
+        }
+
         public async Task<Review?> GetByIdAsync(Guid id)
         {
             return await dbContext.Reviews.FirstOrDefaultAsync(x => x.ReviewID == id);
         }
 
+        public async Task<Review?> GetByPlaceIdUserIdAsync(Guid placeId, Guid userId)
+        {
+            return await dbContext.Reviews.FirstOrDefaultAsync(x => x.PlaceID == placeId && x.UserID==userId);
+        }
+
         public async Task<Review?> UpdateAsync(Guid id, Review review)
         {
 
-            var existingReview = await dbContext.Reviews.FindAsync(id);
+            var existingReview = await dbContext.Reviews.FirstOrDefaultAsync(x => x.PlaceID == id);
             if (existingReview == null)
             {
                 // Ako entitet sa ovim ID-om ne postoji, vratite null
@@ -68,7 +92,7 @@ namespace GdeIzaci.Repository.Implementations
             }
 
             // Ažurirajte postojeći entitet sa novim vrednostima
-            dbContext.Entry(existingReview).CurrentValues.SetValues(review);
+            existingReview.numberOfStars = review.numberOfStars;
             await dbContext.SaveChangesAsync();
           
             return existingReview;

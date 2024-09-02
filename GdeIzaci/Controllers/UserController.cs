@@ -1,5 +1,6 @@
 ﻿using GdeIzaci.Data;
 using GdeIzaci.Models.DTO;
+using GdeIzaci.Repository.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -15,13 +16,19 @@ namespace GdeIzaci.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly GdeIzaciDBContext dbContext;
+        private readonly IPlaceRepository placeRepository;
+        private readonly IReviewRepository reviewRepository;
+        private readonly IReservationRepository reservationRepository;
 
-        public UserController(UserManager<IdentityUser> userManager, GdeIzaciDBContext dbContext)
+        public UserController(UserManager<IdentityUser> userManager, GdeIzaciDBContext dbContext, IPlaceRepository placeRepository, IReviewRepository reviewRepository, IReservationRepository reservationRepository)
         {
             this.userManager = userManager;
             this.dbContext = dbContext;
+            this.placeRepository = placeRepository;
+            this.reviewRepository = reviewRepository;
+            this.reservationRepository = reservationRepository;
         }
-
+   
 
         [HttpGet]
         [Route("{id:Guid}")]
@@ -111,7 +118,7 @@ namespace GdeIzaci.Controllers
 
 
         [HttpDelete]
-        [Route("delete/{userId}")]
+        [Route("delete/{userId}")]  
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(string userId)
         {
@@ -128,8 +135,38 @@ namespace GdeIzaci.Controllers
             {
                 return BadRequest("Došlo je do greške prilikom brisanja korisnika");
             }
+            // Povežite se sa drugom bazom podataka
+            using (var transaction = await dbContext.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    // Obrišite mesta koja je korisnik kreirao
+                    var places = dbContext.Places.Where(p => p.UserCreatedID == Guid.Parse(userId));
+                    dbContext.Places.RemoveRange(places);
 
-            return Ok("Korisnik uspešno obrisan");
+                    // Obrišite recenzije koje je korisnik ostavio
+                    var reviews = dbContext.Reviews.Where(r => r.UserID == Guid.Parse(userId));
+                    dbContext.Reviews.RemoveRange(reviews);
+
+                    // Obrišite rezervacije korisnika
+                    var reservations = dbContext.Reservations.Where(r => r.UserId == Guid.Parse(userId));
+                    dbContext.Reservations.RemoveRange(reservations);
+
+                    // Sačuvajte promene u bazi
+                    await dbContext.SaveChangesAsync();
+
+                    // Potvrdite transakciju
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    // U slučaju greške, poništite transakciju
+                    await transaction.RollbackAsync();
+                    return StatusCode(500, $"Došlo je do greške: {ex.Message}");
+                }
+            }
+
+            return Ok("Korisnik uspešno obrisan i povezani podaci su obrisani");
         }
 
         [HttpPut]

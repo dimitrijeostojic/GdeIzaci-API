@@ -5,7 +5,7 @@ namespace GdeIzaci.Models.DTO
     public class AddReviewDto
     {
         [Required]
-        public int NumberOfStars { get; set; }
+        public double NumberOfStars { get; set; }
         [Required]
         public Guid PlaceID { get; set; }
         [Required]

@@ -320,22 +320,6 @@
   },
   {
     "ContainingType": "GdeIzaci.Controllers.ReviewController",
-    "Method": "GetReviewById",
-    "RelativePath": "api/Review/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GdeIzaci.Controllers.ReviewController",
     "Method": "DeleteReview",
     "RelativePath": "api/Review/{id}",
     "HttpMethod": "DELETE",
@@ -366,6 +350,59 @@
       {
         "Name": "updateReviewDto",
         "Type": "GdeIzaci.Models.DTO.UpdateReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.ReviewController",
+    "Method": "GetById",
+    "RelativePath": "api/Review/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.ReviewController",
+    "Method": "GetByPlaceIdUserIdAsync",
+    "RelativePath": "api/Review/{id}/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GdeIzaci.Controllers.ReviewController",
+    "Method": "GetAverageById",
+    "RelativePath": "api/Review/average-rating/{placeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placeId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

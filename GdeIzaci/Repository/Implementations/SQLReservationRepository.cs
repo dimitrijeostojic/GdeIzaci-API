@@ -31,7 +31,17 @@ namespace GdeIzaci.Repository.Implementations
             throw new NotImplementedException();
         }
 
+        public Task<Reservation?> GetAverageAsync(Guid placeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Reservation?> GetByIdAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Reservation?> GetByPlaceIdUserIdAsync(Guid placeId, Guid userId)
         {
             throw new NotImplementedException();
         }

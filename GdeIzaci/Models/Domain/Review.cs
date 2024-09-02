@@ -6,7 +6,7 @@ namespace GdeIzaci.Models.Domain
     {
         [Key]
         public Guid ReviewID { get; set; }
-        public int numberOfStars { get; set; }
+        public double numberOfStars { get; set; }
         public Guid UserID { get; set; }
         public Guid PlaceID { get; set; }
 

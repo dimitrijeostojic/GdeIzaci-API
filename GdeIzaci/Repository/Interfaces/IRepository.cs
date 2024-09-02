@@ -10,5 +10,8 @@ namespace GdeIzaci.Repository.Interfaces
         Task<TEnthity?> GetByIdAsync(Guid id);
         Task<TEnthity?> DeleteAsync(Guid id);
         Task<TEnthity?> UpdateAsync(Guid id, TEnthity enthity);
+        Task<TEnthity?> GetAverageAsync(Guid placeId);
+        Task<TEnthity?> GetByPlaceIdUserIdAsync(Guid placeId, Guid userId);
+
     }
 }

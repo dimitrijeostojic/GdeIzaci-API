@@ -59,24 +59,21 @@ namespace GdeIzaci.Controllers
             var reviewDto = mapper.Map<ReviewDTO>(review);
 
 
-            return CreatedAtAction(nameof(GetReviewById), new { id = review.ReviewID }, reviewDto);
+            return CreatedAtAction(nameof(GetById), new { id = review.PlaceID }, reviewDto);
 
         }
 
 
-        [HttpGet]
-        [Route("{id:Guid}")]
-        public async Task<IActionResult> GetReviewById([FromRoute] Guid id)
+        [HttpGet("average-rating/{placeId:Guid}")]
+        public async Task<IActionResult> GetAverageById(Guid placeId)
         {
-            var review = await reviewRepository.GetByIdAsync(id);
-
-            if (review == null)
+            var averageRating = await reviewRepository.GetAverageAsync(placeId);
+            if (averageRating == null)
             {
-                return BadRequest("Place doesn't exist");
+                return NotFound();
             }
-            //Convert to Dto
-            var reviewDTO = mapper.Map<ReviewDTO>(review);
-            return Ok(reviewDTO);
+
+            return Ok(averageRating);
         }
 
         [HttpDelete]
@@ -97,7 +94,7 @@ namespace GdeIzaci.Controllers
 
         [HttpPut]
         [Route("{id:Guid}")]
-        public async Task<IActionResult> UpdateReview([FromRoute]Guid id, [FromBody] UpdateReviewDto updateReviewDto)
+        public async Task<IActionResult> UpdateReview([FromRoute] Guid id, [FromBody] UpdateReviewDto updateReviewDto)
         {
 
             var review = mapper.Map<Review>(updateReviewDto);
@@ -107,6 +104,33 @@ namespace GdeIzaci.Controllers
             var reviewDto = mapper.Map<ReviewDTO>(review);
 
             return NoContent();
+        }
+
+        [HttpGet]
+        [Route("{id:Guid}/{userId:Guid}")]
+        public async Task<IActionResult> GetByPlaceIdUserIdAsync(Guid id,Guid userId)
+        {
+            var review = await reviewRepository.GetByPlaceIdUserIdAsync(id,userId);
+            if (review == null)
+            {
+                return BadRequest("Place doesn't exist");
+            }
+            var reviewDto = mapper.Map<ReviewDTO>(review);
+            return Ok(reviewDto);
+        }
+
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
+        {
+            var existingReview = await reviewRepository.GetByIdAsync(id);
+            if (existingReview == null)
+            {
+                return BadRequest("Place doesn't exist");
+            }
+            //Convert to Dto
+            var reviewDTO = mapper.Map<ReviewDTO>(existingReview);
+            return Ok(reviewDTO);
         }
 
     }
