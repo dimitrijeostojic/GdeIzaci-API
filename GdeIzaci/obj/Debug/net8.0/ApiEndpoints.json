@@ -142,6 +142,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GdeIzaci.Controllers.PlaceController",
+    "Method": "GetPlacesForUser",
+    "RelativePath": "api/Place/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GdeIzaci.Controllers.PlaceItemController",
     "Method": "GetAll",
     "RelativePath": "api/PlaceItem",

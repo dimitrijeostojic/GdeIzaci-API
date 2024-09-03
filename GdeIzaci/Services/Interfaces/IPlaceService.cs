@@ -9,5 +9,6 @@ namespace GdeIzaci.Services.Interfaces
         Task<PlaceDTO> CreateAsync(AddPlaceRequestDto addPlaceRequestDto, Guid userId);
         Task<PlaceDTO> UpdateAsync(Guid id, UpdatePlaceRequestDto updatePlaceRequestDto, Guid userId, string role);
         Task<PlaceDTO> DeleteAsync(Guid id, Guid userId, string role);
+        Task<List<PlaceDTO>> GetPlacesForUserAsync(Guid userId);
     }
 }

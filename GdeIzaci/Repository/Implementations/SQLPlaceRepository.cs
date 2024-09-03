@@ -85,6 +85,12 @@ namespace GdeIzaci.Repository.Implementations
             return await dbContext.Places.Include("PlaceItem").FirstOrDefaultAsync(x => x.PlaceID == id);
         }
 
+        public async Task<List<Place>> GetPlacesForUserAsync(Guid userId)
+        {
+            var places = await dbContext.Reservations.Where(r => r.UserId == userId).Include(r => r.Place).Select(r => r.Place).ToListAsync();
+            return places;
+        }
+
         public async Task<Place?> UpdateAsync(Guid id, Place place)
         {
             var existingPlace = await dbContext.Places.FirstOrDefaultAsync(x => x.PlaceID == id);

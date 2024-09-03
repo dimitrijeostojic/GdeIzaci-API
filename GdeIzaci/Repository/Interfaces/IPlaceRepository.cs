@@ -10,6 +10,7 @@ namespace GdeIzaci.Repository.Interfaces
         Task<Place?> DeleteAsync(Guid id);
         Task<List<Place>> GetAllAsync([FromQuery] string? filterOn, [FromQuery] string? filterQuery, [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000);
         Task<Place?> UpdateAsync(Guid id, Place enthity);
+        Task<List<Place>> GetPlacesForUserAsync(Guid userId);
 
     }
 }

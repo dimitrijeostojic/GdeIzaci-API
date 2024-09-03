@@ -55,6 +55,16 @@ namespace GdeIzaci.Services.Implementations
             return mapper.Map<PlaceDTO>(existingPlace);
         }
 
+        public async Task<List<PlaceDTO>> GetPlacesForUserAsync(Guid userId)
+        {
+            var places = await placeRepository.GetPlacesForUserAsync(userId);
+            if (places==null)
+            {
+                return null;
+            }
+            return mapper.Map<List<PlaceDTO>>(places);
+        }
+
         public async Task<PlaceDTO> UpdateAsync(Guid id, UpdatePlaceRequestDto updatePlaceRequestDto, Guid userId, string role)
         {
             var placeDomain = mapper.Map<Place>(updatePlaceRequestDto);

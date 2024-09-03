@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿    using AutoMapper;
 using GdeIzaci.Data;
 using GdeIzaci.Models.Domain;
 using GdeIzaci.Models.DTO;
@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using System.Globalization;
 using System.Security.Claims;
@@ -102,6 +103,16 @@ namespace GdeIzaci.Controllers
                 return BadRequest("This place doesn't exist or you are not allowed to update this object");
             }
             return Ok(placeDto);
+        }
+
+        [HttpGet("user/{userId}")]
+        [Authorize(Roles="RegularUser")]
+        public async Task<IActionResult> GetPlacesForUser(Guid userId)
+        {
+            // Prvo dohvatamo rezervacije korisnika i radimo join sa Place tabelom
+            var places = await placeService.GetPlacesForUserAsync(userId);
+          
+            return Ok(places);
         }
     }
 }
