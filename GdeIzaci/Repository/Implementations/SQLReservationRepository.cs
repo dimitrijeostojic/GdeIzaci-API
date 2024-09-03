@@ -1,7 +1,9 @@
 ﻿using GdeIzaci.Data;
 using GdeIzaci.Models.Domain;
+using GdeIzaci.Models.DTO;
 using GdeIzaci.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GdeIzaci.Repository.Implementations
 {
@@ -21,34 +23,22 @@ namespace GdeIzaci.Repository.Implementations
             return reservation;
         }
 
-        public Task<Reservation?> DeleteAsync(Guid id)
+        public async Task<Reservation?> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var existingReservation = await dbContext.Reservations.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingReservation != null)
+            {
+                dbContext.Reservations.Remove(existingReservation);
+                await dbContext.SaveChangesAsync();
+                return existingReservation;
+            }
+            return null;
         }
 
-        public Task<List<Reservation>> GetAllAsync([FromQuery] string? filterOn, [FromQuery] string? filterQuery, [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
+        public async Task<Reservation?> GetByIdAsync(Guid placeID,Guid userID)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Reservation?> GetAverageAsync(Guid placeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Reservation?> GetByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Reservation?> GetByPlaceIdUserIdAsync(Guid placeId, Guid userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Reservation?> UpdateAsync(Guid id, Reservation enthity)
-        {
-            throw new NotImplementedException();
+            return await dbContext.Reservations
+                .FirstOrDefaultAsync(r => r.PlaceID == placeID && r.UserId == userID);
         }
     }
 }

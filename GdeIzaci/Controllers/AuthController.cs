@@ -1,5 +1,6 @@
 ﻿using GdeIzaci.Models.DTO;
 using GdeIzaci.Repository.Interfaces;
+using GdeIzaci.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,13 +13,11 @@ namespace GdeIzaci.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly ITokenRepository tokenRepository;
+        private readonly IAuthService authService;
 
-        public AuthController(UserManager<IdentityUser> userManager, ITokenRepository tokenRepository)
+        public AuthController(IAuthService authService)
         {
-            this.userManager = userManager;
-            this.tokenRepository = tokenRepository;
+            this.authService = authService;
         }
 
         //localhost:8051/api/register
@@ -30,15 +29,8 @@ namespace GdeIzaci.Controllers
             {
                 return BadRequest(ModelState);
             }
-            // Kreiranje IdentityUser objekta sa podacima iz zahteva
-            var identityUser = new IdentityUser()
-            {
-                UserName = registerRequestDto.Username,
-                Email = registerRequestDto.Email,
-            };
 
-            // Kreiranje korisnika u sistemu
-            var identityResult = await userManager.CreateAsync(identityUser, registerRequestDto.Password);
+            var identityResult = await authService.RegisterUserAsync(registerRequestDto);
 
             if (!identityResult.Succeeded)
             {
@@ -46,34 +38,16 @@ namespace GdeIzaci.Controllers
                 return BadRequest($"Error creating user: {errors}");
             }
 
-            // Dodavanje uloga korisniku ako je registracija uspešna
-            if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
+            var user = await authService.FindUserByUsernameAsync(registerRequestDto.Username);
+            var jwtToken = await authService.GenerateJwtTokenAsync(user);
+
+            return Ok(new
             {
-                identityResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
-
-                if (!identityResult.Succeeded)
-                {
-                    var errors = string.Join(", ", identityResult.Errors.Select(e => e.Description));
-                    return BadRequest($"Error adding roles: {errors}");
-                }
-            }
-
-            //Generisanje tokena
-            var roles = await userManager.GetRolesAsync(identityUser);
-            if (roles != null)
-            {
-                //Kreiranje tokena
-                var jwtToken = tokenRepository.CreateJWTToken(identityUser, roles.ToList());
-                return Ok(new
-                {
-                    Message = "User was registered successfully, please Login",
-                    JwtToken = jwtToken,
-                    Username = registerRequestDto.Username,
-                    Roles = roles
-                });
-            }
-
-            return Ok("User was registered, please Login");
+                Message = "User was registered successfully, please Login",
+                JwtToken = jwtToken,
+                Username = registerRequestDto.Username,
+                Roles = await authService.GetUserRolesAsync(user)
+            });
         }
 
 
@@ -86,29 +60,21 @@ namespace GdeIzaci.Controllers
             {
                 return BadRequest(ModelState);
             }
-            // Pronalaženje korisnika po email adresi
-            var user = await userManager.FindByNameAsync(loginRequestDto.Username);
-            if (user != null)
+
+            var user = await authService.FindUserByUsernameAsync(loginRequestDto.Username);
+
+            if (user != null && await authService.CheckPasswordAsync(user, loginRequestDto.Password))
             {
-                // Provera lozinke
-                var checkPasswordResult = await userManager.CheckPasswordAsync(user, loginRequestDto.Password);
-                if (checkPasswordResult)
+                var jwtToken = await authService.GenerateJwtTokenAsync(user);
+
+                return Ok(new
                 {
-                    //Get roles for this user
-                    var roles = await userManager.GetRolesAsync(user);
-                    if (roles != null)
-                    {
-                        //Kreiranje tokena
-                        var jwtToken = tokenRepository.CreateJWTToken(user, roles.ToList());
-                        return Ok(new
-                        {
-                            JwtToken = jwtToken,
-                            Username = loginRequestDto.Username,
-                            Roles = roles
-                        });
-                    }
-                }
+                    JwtToken = jwtToken,
+                    Username = loginRequestDto.Username,
+                    Roles = await authService.GetUserRolesAsync(user)
+                });
             }
+
             return BadRequest("Wrong credentials!");
         }
     }

@@ -3,6 +3,7 @@ using GdeIzaci.Data;
 using GdeIzaci.Models.Domain;
 using GdeIzaci.Models.DTO;
 using GdeIzaci.Repository.Interfaces;
+using GdeIzaci.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,17 +15,13 @@ namespace GdeIzaci.Controllers
     [ApiController]
     public class ReservationController : ControllerBase
     {
-        private readonly GdeIzaciDBContext dbContext;
-        private readonly IMapper mapper;
+        private readonly IReservationService reservationService;
         private readonly UserManager<IdentityUser> userManager;
-        private readonly IReservationRepository reservationRepository;
 
-        public ReservationController(GdeIzaciDBContext dbContext, IMapper mapper, UserManager<IdentityUser> userManager, IReservationRepository reservationRepository)
+        public ReservationController(IReservationService reservationService, UserManager<IdentityUser> userManager)
         {
-            this.dbContext = dbContext;
-            this.mapper = mapper;
+            this.reservationService = reservationService;
             this.userManager = userManager;
-            this.reservationRepository = reservationRepository;
         }
 
         [HttpPost]
@@ -41,40 +38,24 @@ namespace GdeIzaci.Controllers
                 return Unauthorized("User must be logged in to make a reservation.");
             }
 
-            var place = await dbContext.Places.FindAsync(createReservationDto.PlaceID);
-            if (place == null)
+            try
             {
-                return NotFound("Place not found.");
+                var reservationDto = await reservationService.CreateReservationAsync(createReservationDto);
+                return CreatedAtAction(nameof(Create), new { id = reservationDto.Id }, reservationDto);
             }
-
-            var reservationDomain = mapper.Map<Reservation>(createReservationDto);
-
-            reservationDomain.Id = Guid.NewGuid();
-            reservationDomain.UserId = createReservationDto.UserID;
-            reservationDomain.PlaceID = createReservationDto.PlaceID;
-            reservationDomain.ReservationDateTime = createReservationDto.ReservationDateTime;
-
-            reservationDomain = await reservationRepository.CreateAsync(reservationDomain);
-
-            var reservationDto = mapper.Map<ReservationDTO>(reservationDomain);
-
-            return CreatedAtAction(nameof(Create), new { id = reservationDto.Id }, reservationDto);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [HttpGet]
         [Route("check-reservation/{placeId:Guid}")]
-        public async Task<IActionResult> CheckReservation([FromRoute] Guid placeId, [FromQuery] Guid userId)
+        public async Task<IActionResult> CheckReservation([FromRoute] Guid placeID, [FromQuery] Guid userID)
         {
-            var reservation = await dbContext.Reservations
-                .FirstOrDefaultAsync(r => r.PlaceID == placeId && r.UserId == userId);
-
-            if (reservation != null)
-            {
-                return Ok(true); // Rezervacija postoji
-            }
-
-            return Ok(false); // Rezervacija ne postoji
+            var exists = await reservationService.CheckReservationAsync(placeID, userID);
+            return Ok(exists);
         }
 
         [HttpDelete]
@@ -83,23 +64,12 @@ namespace GdeIzaci.Controllers
         {
             try
             {
-                var reservation = await dbContext.Reservations
-                    .FirstOrDefaultAsync(r => r.PlaceID == placeID && r.UserId == userID);
-
-                if (reservation == null)
-                {
-                    return NotFound(); // Rezervacija nije pronađena
-                }
-
-                dbContext.Reservations.Remove(reservation);
-                await dbContext.SaveChangesAsync();
-
-                return NoContent(); // Uspešno obrisano
+                var reservationDto = await reservationService.DeleteReservationAsync(placeID, userID);
+                return Ok(reservationDto);
             }
             catch (Exception ex)
             {
-                // Možete dodati logiku za logovanje greške ovde
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return NotFound(ex.Message);
             }
         }
 

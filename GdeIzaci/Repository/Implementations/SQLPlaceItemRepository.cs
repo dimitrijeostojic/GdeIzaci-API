@@ -14,48 +14,12 @@ namespace GdeIzaci.Repository.Implementations
         {
             this.dbContext = dbContext;
         }
-        public Task<PlaceItem> CreateAsync(PlaceItem enthity)
+
+        public async Task<List<PlaceItem>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await dbContext.PlaceItems.ToListAsync();
         }
 
-        public Task<PlaceItem?> DeleteAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<PlaceItem>> GetAllAsync([FromQuery] string? filterOn, [FromQuery] string? filterQuery, [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
-        {
-            var placeItems = dbContext.PlaceItems.AsQueryable();
-
-            return await placeItems.ToListAsync();
-        }
-
-        public Task<PlaceItem?> GetAverageAsync(Guid placeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<PlaceItem?> GetByIdAsync(Guid id)
-        {
-            return await dbContext.PlaceItems.FirstOrDefaultAsync(x => x.PlaceItemID == id);
-        }
-
-        public Task<PlaceItem?> GetByPlaceIdUserIdAsync(Guid placeId, Guid userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<PlaceItem?> UpdateAsync(Guid id, PlaceItem enthity)
-        {
-            var existingPlaceItem = await dbContext.PlaceItems.FirstOrDefaultAsync(x => x.PlaceItemID == id);
-            if (existingPlaceItem == null)
-            {
-                return null;
-            }
-            existingPlaceItem.NumberOfPlacesCurrentlyOfThisType = enthity.NumberOfPlacesCurrentlyOfThisType;
-            await dbContext.SaveChangesAsync();
-            return existingPlaceItem;
-        }
+       
     }
 }

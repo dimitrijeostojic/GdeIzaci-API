@@ -2,6 +2,7 @@
 using GdeIzaci.Models.Domain;
 using GdeIzaci.Models.DTO;
 using GdeIzaci.Repository.Interfaces;
+using GdeIzaci.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -15,16 +16,12 @@ namespace GdeIzaci.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
-        private readonly IReviewRepository reviewRepository;
-        private readonly IMapper mapper;
-        private readonly IPlaceRepository placeRepository;
+        private readonly IReviewService reviewService;
         private readonly UserManager<IdentityUser> userManager;
 
-        public ReviewController(IReviewRepository reviewRepository, IMapper mapper, IPlaceRepository placeRepositorty, UserManager<IdentityUser> userManager)
+        public ReviewController(IReviewService reviewService, UserManager<IdentityUser> userManager)
         {
-            this.reviewRepository = reviewRepository;
-            this.mapper = mapper;
-            this.placeRepository = placeRepositorty;
+            this.reviewService = reviewService;
             this.userManager = userManager;
         }
 
@@ -32,63 +29,43 @@ namespace GdeIzaci.Controllers
         [Authorize(Roles = "RegularUser, Manager")]
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery, [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
         {
-
-            var reviews = await reviewRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
-
-            var reviewsDto = mapper.Map<List<ReviewDTO>>(reviews);
-
+            var reviewsDto = await reviewService.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
             return Ok(reviewsDto);
-
         }
 
         [HttpPost]
-        [Authorize(Roles = "RegularUser")]
+        [Authorize(Roles = "RegularUser, Manager")]
         public async Task<IActionResult> CreateReview([FromBody] AddReviewDto addReviewDto)
         {
-            var currentUser = userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var review = mapper.Map<Review>(addReviewDto);
-            review.ReviewID = Guid.NewGuid();
-            review.UserID = addReviewDto.UserID;
 
-            review = await reviewRepository.CreateAsync(review);
-
-            var reviewDto = mapper.Map<ReviewDTO>(review);
-
-
-            return CreatedAtAction(nameof(GetById), new { id = review.PlaceID }, reviewDto);
-
+            var reviewDto = await reviewService.CreateReviewAsync(addReviewDto, Guid.Parse(user.Id));
+            return CreatedAtAction(nameof(GetById), new { id = reviewDto.PlaceID }, reviewDto);
         }
 
 
         [HttpGet("average-rating/{placeId:Guid}")]
         public async Task<IActionResult> GetAverageById(Guid placeId)
         {
-            var averageRating = await reviewRepository.GetAverageAsync(placeId);
-            if (averageRating == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(averageRating);
+            var averageRating = await reviewService.GetAverageByIdAsync(placeId);
+            return averageRating != null ? Ok(averageRating) : NotFound();
         }
 
         [HttpDelete]
         [Route("{id:Guid}")]
         public async Task<IActionResult> DeleteReview([FromRoute] Guid id)
         {
-            var review = await reviewRepository.DeleteAsync(id);
-
-            if (review == null)
-            {
-                return BadRequest("This review doesn't exist");
-            }
-
-            var reviewDto = mapper.Map<ReviewDTO>(review);
-            return Ok(reviewDto);
+            var reviewDto = await reviewService.DeleteReviewAsync(id);
+            return reviewDto != null ? Ok(reviewDto) : BadRequest("This review doesn't exist");
 
         }
 
@@ -97,40 +74,24 @@ namespace GdeIzaci.Controllers
         public async Task<IActionResult> UpdateReview([FromRoute] Guid id, [FromBody] UpdateReviewDto updateReviewDto)
         {
 
-            var review = mapper.Map<Review>(updateReviewDto);
-
-            review = await reviewRepository.UpdateAsync(id, review);
-
-            var reviewDto = mapper.Map<ReviewDTO>(review);
-
-            return NoContent();
+            var reviewDto = await reviewService.UpdateReviewAsync(id, updateReviewDto);
+            return reviewDto != null ? Ok(reviewDto) : BadRequest("Failed to update review");
         }
 
         [HttpGet]
         [Route("{id:Guid}/{userId:Guid}")]
         public async Task<IActionResult> GetByPlaceIdUserIdAsync(Guid id,Guid userId)
         {
-            var review = await reviewRepository.GetByPlaceIdUserIdAsync(id,userId);
-            if (review == null)
-            {
-                return BadRequest("Place doesn't exist");
-            }
-            var reviewDto = mapper.Map<ReviewDTO>(review);
-            return Ok(reviewDto);
+            var reviewDto = await reviewService.GetByPlaceIdUserIdAsync(id, userId);
+            return reviewDto != null ? Ok(reviewDto) : BadRequest("Review doesn't exist");
         }
 
         [HttpGet]
         [Route("{id:Guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var existingReview = await reviewRepository.GetByIdAsync(id);
-            if (existingReview == null)
-            {
-                return BadRequest("Place doesn't exist");
-            }
-            //Convert to Dto
-            var reviewDTO = mapper.Map<ReviewDTO>(existingReview);
-            return Ok(reviewDTO);
+            var reviewDto = await reviewService.GetByIdAsync(id);
+            return reviewDto != null ? Ok(reviewDto) : BadRequest("Review doesn't exist");
         }
 
     }

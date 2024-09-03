@@ -2,6 +2,8 @@ using GdeIzaci.Data;
 using GdeIzaci.Mappings;
 using GdeIzaci.Repository.Implementations;
 using GdeIzaci.Repository.Interfaces;
+using GdeIzaci.Services.Implementations;
+using GdeIzaci.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -64,6 +66,12 @@ builder.Services.AddScoped<IPlaceItemRepository, SQLPlaceItemRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IReservationRepository, SQLReservationRepository>();
 builder.Services.AddScoped<IReviewRepository, SQLReviewRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPlaceService, PlaceService>();
+builder.Services.AddScoped<IPlaceItemService, PlaceItemService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 

@@ -4,6 +4,5 @@
     {
         public Guid PlaceItemID { get; set; }
         public string Name { get; set; }
-        public int NumberOfPlacesCurrentlyOfThisType { get; set; }
     }
 }

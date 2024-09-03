@@ -145,4 +145,3 @@ C:\Users\dimit\Desktop\gde izaci .net\GdeIzaci\GdeIzaci\obj\Debug\net8.0\refint\
 C:\Users\dimit\Desktop\gde izaci .net\GdeIzaci\GdeIzaci\obj\Debug\net8.0\GdeIzaci.pdb
 C:\Users\dimit\Desktop\gde izaci .net\GdeIzaci\GdeIzaci\obj\Debug\net8.0\GdeIzaci.genruntimeconfig.cache
 C:\Users\dimit\Desktop\gde izaci .net\GdeIzaci\GdeIzaci\obj\Debug\net8.0\ref\GdeIzaci.dll
-C:\Users\dimit\Desktop\gde izaci .net\GdeIzaci\GdeIzaci\bin\Debug\net8.0\Files\Place.json

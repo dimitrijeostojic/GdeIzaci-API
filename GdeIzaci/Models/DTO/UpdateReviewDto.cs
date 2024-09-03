@@ -6,7 +6,5 @@ namespace GdeIzaci.Models.DTO
     {
         [Required]
         public double NumberOfStars { get; set; }
-        [Required]
-        public Guid PlaceID { get; set; }
     }
 }

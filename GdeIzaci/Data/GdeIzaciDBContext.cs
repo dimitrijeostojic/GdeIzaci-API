@@ -21,30 +21,8 @@ namespace GdeIzaci.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //// Veza Place - PlaceItem (1-M)
-            //modelBuilder.Entity<Place>()
-            //    .HasMany(p => p.PlaceItem)
-            //    .WithOne(pi => pi.Place)
-            //    .HasForeignKey(pi => pi.PlaceID);
-
-            //// Veza Place - Reservation (1-M)
-            //modelBuilder.Entity<Place>()
-            //    .HasMany(p => p.Reservations)
-            //    .WithOne(r => r.Place)
-            //    .HasForeignKey(r => r.Place);
-
-            //// Veza Place - Review (1-M)
-            //modelBuilder.Entity<Place>()
-            //    .HasMany(p => p.Reviews)
-            //    .WithOne(r => r.Place)
-            //    .HasForeignKey(r => r.PlaceID);
-
-
-
-
             //Seed placeItems to the databse
             modelBuilder.Entity<PlaceItem>().HasData(SeedPlaceItems());
-            //modelBuilder.Entity<Place>().HasData(SeedPlaces());
         }
         public List<PlaceItem> SeedPlaceItems()
         {
@@ -55,17 +33,6 @@ namespace GdeIzaci.Data
                 placeItems = JsonConvert.DeserializeObject<List<PlaceItem>>(json);
             }
             return placeItems;
-        }
-
-        public List<Place> SeedPlaces()
-        {
-            var places = new List<Place>();
-            using(StreamReader r = new StreamReader(""))
-            {
-                string json = r.ReadToEnd();
-                places=JsonConvert.DeserializeObject<List<Place>>(json);
-            }
-            return places;
         }
     }
 }

@@ -8,12 +8,10 @@ namespace GdeIzaci.Mappings
     {
         public AutoMapperProfiles()
         {
-            CreateMap<AddPlaceRequestDto, Place>().ReverseMap();
             CreateMap<Place, PlaceDTO>().ReverseMap();
+            CreateMap<AddPlaceRequestDto, Place>().ReverseMap();
             CreateMap<UpdatePlaceRequestDto, Place>().ReverseMap();
             CreateMap<PlaceItem, PlaceItemDTO>().ReverseMap();
-            CreateMap<UpdatePlaceItemRequestDTO, PlaceItem>().ReverseMap();
-
             CreateMap<Review, ReviewDTO>().ReverseMap();
             CreateMap<Review, AddReviewDto>().ReverseMap();
             CreateMap<Review, UpdateReviewDto>().ReverseMap();
