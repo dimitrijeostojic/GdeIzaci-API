@@ -7,12 +7,24 @@
       "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\controllers\\placecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\services\\interfaces\\iplaceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\services\\interfaces\\iplaceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\services\\implementations\\placeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\services\\implementations\\placeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\updateplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\updateplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\addplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\addplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\placedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\placedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\domain\\place.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\domain\\place.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\repository\\implementations\\sqlplacerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,15 +38,67 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdatePlaceRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T16:04:50.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddPlaceRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T16:02:45.877Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
+              "Title": "PlaceDTO.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T16:02:17.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Place.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Place.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\Domain\\Place.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Place.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\Domain\\Place.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAzwA0AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T16:01:31.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "SQLPlaceRepository.cs",
               "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Repository\\Implementations\\SQLPlaceRepository.cs",
               "RelativeDocumentMoniker": "GdeIzaci\\Repository\\Implementations\\SQLPlaceRepository.cs",
@@ -47,28 +111,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "PlaceService.cs",
               "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Implementations\\PlaceService.cs",
               "RelativeDocumentMoniker": "GdeIzaci\\Services\\Implementations\\PlaceService.cs",
               "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Implementations\\PlaceService.cs",
               "RelativeToolTip": "GdeIzaci\\Services\\Implementations\\PlaceService.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAjwEAAAAA2AAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAApwBIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-03T12:08:54.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IPlaceService.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Interfaces\\IPlaceService.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Services\\Interfaces\\IPlaceService.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Interfaces\\IPlaceService.cs",
-              "RelativeToolTip": "GdeIzaci\\Services\\Interfaces\\IPlaceService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T12:07:42.598Z",
               "EditorCaption": ""
             },
             {
@@ -79,7 +130,7 @@
               "RelativeDocumentMoniker": "GdeIzaci\\Controllers\\PlaceController.cs",
               "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Controllers\\PlaceController.cs",
               "RelativeToolTip": "GdeIzaci\\Controllers\\PlaceController.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAUwGwAAAAlAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAwwC4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-03T11:54:01.936Z",
               "EditorCaption": ""

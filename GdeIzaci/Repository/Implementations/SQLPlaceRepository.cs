@@ -101,6 +101,7 @@ namespace GdeIzaci.Repository.Implementations
             existingPlace.Name = place.Name;
             existingPlace.Description = place.Description;
             existingPlace.Location = place.Location;
+            existingPlace.Date=place.Date;
             existingPlace.Price = place.Price;
             existingPlace.Photo = place.Photo;
             existingPlace.PlaceItemID = place.PlaceItemID;

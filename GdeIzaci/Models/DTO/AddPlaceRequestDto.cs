@@ -12,7 +12,9 @@ namespace GdeIzaci.Models.DTO
         [Required]
         public string Location { get; set; }
         [Required]
-        [Range(0,100000)]
+        public DateTime Date { get; set; }
+        [Required]
+        [Range(0, 100000)]
         public int Price { get; set; }
         [Required]
         public string Photo { get; set; }

@@ -8,6 +8,7 @@ namespace GdeIzaci.Models.DTO
         public string Name { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
+        public DateTime Date { get; set; }
         public int Price { get; set; }
         public string Photo { get; set; }
         public Guid UserCreatedID { get; set; }
