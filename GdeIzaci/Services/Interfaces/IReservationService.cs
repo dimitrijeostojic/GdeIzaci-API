@@ -6,7 +6,7 @@ namespace GdeIzaci.Services.Interfaces
     public interface IReservationService
     {
         Task<ReservationDTO> CreateReservationAsync(CreateReservationDTO createReservationDto);
-        Task<bool> CheckReservationAsync(Guid placeId, Guid userId);
+        Task<ReservationCheckResultDTO> CheckReservationAsync(Guid placeId, Guid userId);
         Task<ReservationDTO> DeleteReservationAsync(Guid placeId, Guid userId);
     }
 }

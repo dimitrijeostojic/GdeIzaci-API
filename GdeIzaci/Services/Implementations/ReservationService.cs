@@ -22,10 +22,14 @@ namespace GdeIzaci.Services.Implementations
         }
 
 
-        public async Task<bool> CheckReservationAsync(Guid placeId, Guid userId)
+        public async Task<ReservationCheckResultDTO> CheckReservationAsync(Guid placeId, Guid userId)
         {
             var reservation = await reservationRepository.GetByIdAsync(placeId, userId);
-            return reservation != null;
+            return new ReservationCheckResultDTO
+            {
+                IsReserved = reservation != null,
+                NumberOfUsers = reservation?.NumberOfUsers ?? 1
+            };
         }
 
         public async Task<ReservationDTO> CreateReservationAsync(CreateReservationDTO createReservationDto)
@@ -38,9 +42,9 @@ namespace GdeIzaci.Services.Implementations
 
             var reservationDomain = mapper.Map<Reservation>(createReservationDto);
             reservationDomain.Id = Guid.NewGuid();
-            reservationDomain.UserId = createReservationDto.UserID;
-            reservationDomain.PlaceID = createReservationDto.PlaceID;
-            reservationDomain.ReservationDateTime = createReservationDto.ReservationDateTime;
+            //reservationDomain.UserId = createReservationDto.UserID;
+            //reservationDomain.PlaceID = createReservationDto.PlaceID;
+            //reservationDomain.ReservationDateTime = createReservationDto.ReservationDateTime;
 
             var createdReservation = await reservationRepository.CreateAsync(reservationDomain);
 

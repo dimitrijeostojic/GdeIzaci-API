@@ -3,32 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\controllers\\placecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\controllers\\placecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\services\\implementations\\placeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\services\\implementations\\placeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\createreservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\createreservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\updateplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\updateplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\domain\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\domain\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\addplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\addplacerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\services\\implementations\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\services\\implementations\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\placedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\placedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\repository\\implementations\\sqlreservationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\repository\\implementations\\sqlreservationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\domain\\place.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\domain\\place.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\repository\\implementations\\sqlplacerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\repository\\implementations\\sqlplacerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|c:\\users\\dimit\\desktop\\gde izaci .net\\gdeizaci\\gdeizaci\\models\\dto\\reservationcheckresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC8495F-8995-4583-878A-5C0F5760745D}|GdeIzaci\\GdeIzaci.csproj|solutionrelative:gdeizaci\\models\\dto\\reservationcheckresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,101 +46,127 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdatePlaceRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
-              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\UpdatePlaceRequestDto.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T16:04:50.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AddPlaceRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
-              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\AddPlaceRequestDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAABPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T16:02:45.877Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PlaceDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
-              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\PlaceDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAvAAAA",
+              "DocumentIndex": 0,
+              "Title": "ReservationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\ReservationDTO.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\ReservationDTO.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\ReservationDTO.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\ReservationDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T16:02:17.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Place.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Place.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Models\\Domain\\Place.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Place.cs",
-              "RelativeToolTip": "GdeIzaci\\Models\\Domain\\Place.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAzwA0AAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T16:01:31.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SQLPlaceRepository.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Repository\\Implementations\\SQLPlaceRepository.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Repository\\Implementations\\SQLPlaceRepository.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Repository\\Implementations\\SQLPlaceRepository.cs",
-              "RelativeToolTip": "GdeIzaci\\Repository\\Implementations\\SQLPlaceRepository.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAjwFoAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T12:10:34.163Z",
+              "WhenOpened": "2024-09-03T18:32:56.262Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PlaceService.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Implementations\\PlaceService.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Services\\Implementations\\PlaceService.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Implementations\\PlaceService.cs",
-              "RelativeToolTip": "GdeIzaci\\Services\\Implementations\\PlaceService.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAApwBIAAAAJAAAA",
+              "Title": "CreateReservationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\CreateReservationDTO.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\CreateReservationDTO.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\CreateReservationDTO.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\CreateReservationDTO.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAwAgAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T12:08:54.089Z",
+              "WhenOpened": "2024-09-03T18:32:39.038Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlaceController.cs",
-              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Controllers\\PlaceController.cs",
-              "RelativeDocumentMoniker": "GdeIzaci\\Controllers\\PlaceController.cs",
-              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Controllers\\PlaceController.cs",
-              "RelativeToolTip": "GdeIzaci\\Controllers\\PlaceController.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAwwC4AAAANAAAA",
+              "DocumentIndex": 2,
+              "Title": "Reservation.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Reservation.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\Domain\\Reservation.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Reservation.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\Domain\\Reservation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T11:54:01.936Z",
+              "WhenOpened": "2024-09-03T18:31:25.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Place.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Place.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\Domain\\Place.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\Domain\\Place.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\Domain\\Place.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:29:29.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReservationCheckResultDTO.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\ReservationCheckResultDTO.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Models\\DTO\\ReservationCheckResultDTO.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Models\\DTO\\ReservationCheckResultDTO.cs",
+              "RelativeToolTip": "GdeIzaci\\Models\\DTO\\ReservationCheckResultDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:16:56.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SQLReservationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Repository\\Implementations\\SQLReservationRepository.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Repository\\Implementations\\SQLReservationRepository.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Repository\\Implementations\\SQLReservationRepository.cs",
+              "RelativeToolTip": "GdeIzaci\\Repository\\Implementations\\SQLReservationRepository.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAwwAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:02:19.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Implementations\\ReservationService.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Services\\Implementations\\ReservationService.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Implementations\\ReservationService.cs",
+              "RelativeToolTip": "GdeIzaci\\Services\\Implementations\\ReservationService.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAuwB8AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:01:52.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Controllers\\ReservationController.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "GdeIzaci\\Controllers\\ReservationController.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAjwDgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:01:29.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeDocumentMoniker": "GdeIzaci\\Services\\Interfaces\\IReservationService.cs",
+              "ToolTip": "C:\\Users\\dimit\\Desktop\\gde izaci .net\\GdeIzaci\\GdeIzaci\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeToolTip": "GdeIzaci\\Services\\Interfaces\\IReservationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:19:17.944Z",
               "EditorCaption": ""
             }
           ]
